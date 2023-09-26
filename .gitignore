@@ -3,3 +3,11 @@
 
 # Desktop Services Store
 *.DS_Store
+
+# Directories
+__pycache__/
+data/
+
+# Lab
+*.pth
+*.png
