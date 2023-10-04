@@ -25,7 +25,7 @@ def get_mnist_image_from_user(dataset):
     idx = int(idx)
 
     # Check the user input
-    if (idx < 0 or idx > len(dataset)):
+    if (idx < 0 or idx > len(dataset) - 1):
         print(f'Error: {idx} is not valid input.')
         sys.exit(1)
 
