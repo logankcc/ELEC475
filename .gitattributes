@@ -1,0 +1,4 @@
+COCO1k.zip filter=lfs diff=lfs merge=lfs -text
+COCO10k.zip filter=lfs diff=lfs merge=lfs -text
+wikiart1k.zip filter=lfs diff=lfs merge=lfs -text
+wikiart10k.zip filter=lfs diff=lfs merge=lfs -text
