@@ -10,6 +10,8 @@ data/
 output/
 COCO1k/
 wikiart1k/
+COCO10k/
+wikiart10k/
 
 # Lab
 *.pth
