@@ -8,6 +8,10 @@
 __pycache__/
 data/
 output/
+COCO1k/
+COCO10k/
+wikiart1k/
+wikiart10k/
 
 # Lab
 *.pth
