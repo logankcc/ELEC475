@@ -7,8 +7,6 @@
 # Directories
 __pycache__/
 data/
-datasets/
-images/
 
 # Lab
 *.pth
