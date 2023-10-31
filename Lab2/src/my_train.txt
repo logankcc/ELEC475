@@ -1,1 +1,5 @@
-python3 train.py -content_dir ./../datasets/COCO100/ -style_dir ./../datasets/wikiart100/ -gamma 0.9 -e 10 -b 8 -l encoder.pth -s decoder.pth -p loss_plot.png -cuda N
+# 1k
+python3 train.py -content_dir ./../datasets/COCO1k/ -style_dir ./../datasets/wikiart1k/ -gamma 0.9 -e 50 -b 8 -l encoder.pth -s decoder_1k.pth -p loss_curve_1k.png -cuda Y
+
+# 10k
+python3 train.py -content_dir ./../datasets/COCO10k/ -style_dir ./../datasets/wikiart10k/ -gamma 0.9 -e 30 -b 8 -l encoder.pth -s decoder_10k.pth -p loss_curve_10k.png -cuda Y

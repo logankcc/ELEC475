@@ -83,7 +83,7 @@ def train(model, gamma, num_epochs, optimizer, content_dataloader, style_dataloa
             batch_style_loss += loss_s.item()
             batch_total_loss += loss.item()
 
-        # Adjust the learning rate
+        # NOTE: call to the adjust_learning_rate method is commented out as it resulted in slower convergence
         #adjust_learning_rate(optimizer, epoch)
 
         # Calculate the avg. training loss for this epoch
