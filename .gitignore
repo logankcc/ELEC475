@@ -7,11 +7,7 @@
 # Directories
 __pycache__/
 data/
-output/
-COCO1k/
-wikiart1k/
-COCO10k/
-wikiart10k/
+datasets/
 
 # Lab
 *.pth
