@@ -108,8 +108,9 @@ def train(model, num_epochs, loss_function, optimizer, scheduler, train_dataload
                 validation_labels = validation_labels.to(device)
                 # Pass the inputs through the model (i.e. call forward)
                 validation_outputs = model(validation_inputs)
+                validation_outputs = validation_outputs.view(-1)
                 # Calculate validation loss
-                validation_loss = loss_function(validation_outputs, validation_labels)
+                validation_loss = loss_function(validation_outputs, validation_labels.float())
                 # Sum the total loss over the epoch
                 total_validation_loss += validation_loss.item()
                 # Sum the total number of images processed in the epoch

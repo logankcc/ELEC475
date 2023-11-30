@@ -23,6 +23,7 @@ class CustomDataset(Dataset):
 
     def __getitem__(self, idx):
         image_name, label, _ = self.data[idx]
+        label = int(label)
         image_path = os.path.join(self.root_directory, image_name)
 
         try:

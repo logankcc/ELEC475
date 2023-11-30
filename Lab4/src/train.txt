@@ -1,2 +1,4 @@
 # Train
 python3 train.py -train_dataset_directory ./data/Kitti8_ROIs/train -train_label_file labels.txt -validation_dataset_directory ./data/Kitti8_ROIs/test -validation_label_file labels.txt -epochs 20 -batch_size 256 -weights weights.pth -loss_plot loss_curve.png -cuda N
+
+/home/nigelharvey15/PycharmProjects/venv/bin/python train.py -train_dataset_directory ./data/Kitti8_ROIs/test -train_label_file labels.txt -validation_dataset_directory ./data/Kitti8_ROIs/test -validation_label_file labels.txt -epochs 1 -batch_size 256 -weights weights.pth -loss_plot loss_curve.png -cuda Y
