@@ -1,0 +1,5 @@
+# Train
+python3 KittiToYodaROIs.py -i ./data/Kitti8 -o ./data/Kitti8_ROIs/train -m train -cuda N
+
+# Test
+python3 KittiToYodaROIs.py -i ./data/Kitti8 -o ./data/Kitti8_ROIs/test -m test -cuda N

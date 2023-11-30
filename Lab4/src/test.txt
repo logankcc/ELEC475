@@ -1,0 +1,2 @@
+# Test
+python3 test.py -test_dataset_directory ./data/Kitti8_ROIs/test -test_label_file labels.txt -batch_size 256 -weights weights.pth -cuda N 
