@@ -9,3 +9,7 @@ __pycache__/
 data/
 datasets/
 output/
+
+# .pth Files
+modified_frontend_100.pth
+vanilla_frontend_100.pth
