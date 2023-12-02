@@ -9,7 +9,7 @@ from torchvision import transforms
 from torchvision.models import ResNet18_Weights
 
 
-def init_model(weights):
+def init_model(weights, use_cuda):
     model = torchvision.models.resnet18(weights=ResNet18_Weights.DEFAULT)
     num_features = model.fc.in_features
     model.fc = nn.Sequential(
@@ -17,7 +17,11 @@ def init_model(weights):
         nn.Sigmoid()
     )
 
-    model.load_state_dict(torch.load(weights))
+    if torch.cuda.is_available() and use_cuda.lower() == 'y':
+        model.load_state_dict(torch.load(weights, map_location=torch.device('cuda')))
+    else:
+        model.load_state_dict(torch.load(weights, map_location=torch.device('cpu')))
+
     model.eval()
 
     return model
@@ -30,7 +34,10 @@ def test(model, test_dataloader, device):
         all_predictions = []
         all_labels = []
 
+        iteration = 1
+
         for test_data in test_dataloader:
+            print(f'Iteration: {iteration}')
             test_inputs, test_labels = test_data
             # Move the inputs to the device
             test_inputs = test_inputs.to(device)
@@ -41,6 +48,7 @@ def test(model, test_dataloader, device):
             test_outputs = test_outputs.view(-1)
             # Sum the total number of samples
             num_samples += test_labels.size(0)
+            iteration += 1
 
         # Calculate accuracy
         predictions = torch.round(test_outputs)
@@ -77,7 +85,7 @@ def main():
     use_cuda = args.cuda
 
     # Instantiate the model
-    model = init_model(weights)
+    model = init_model(weights, use_cuda)
 
     # Check if a CUDA-capable GPU is available and if it should be used for testing
     device = utility.setup_device(model, use_cuda)
