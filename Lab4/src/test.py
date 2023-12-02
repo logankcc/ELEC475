@@ -1,6 +1,6 @@
 import argparse
 import custom_dataset
-import sklearn.metrics
+#import sklearn.metrics
 import torch
 import torchvision
 import utility
@@ -34,10 +34,7 @@ def test(model, test_dataloader, device):
         all_predictions = []
         all_labels = []
 
-        iteration = 1
-
         for test_data in test_dataloader:
-            print(f'Iteration: {iteration}')
             test_inputs, test_labels = test_data
             # Move the inputs to the device
             test_inputs = test_inputs.to(device)
@@ -48,23 +45,22 @@ def test(model, test_dataloader, device):
             test_outputs = test_outputs.view(-1)
             # Sum the total number of samples
             num_samples += test_labels.size(0)
-            iteration += 1
+            # Determine the number of correct predictions
+            predictions = torch.round(test_outputs)
+            correct_predictions += (predictions == test_labels).sum().item()
+            # Collect all predictions and labels
+            all_predictions.extend(predictions.cpu().numpy())
+            all_labels.extend(test_labels.cpu().numpy())
 
         # Calculate accuracy
-        predictions = torch.round(test_outputs)
-        correct_predictions += (predictions == test_labels).sum().item()
-        accuracy = correct_predictions / num_samples
-
-        # Collect all predictions and labels
-        all_predictions.extend(predictions.cpu().numpy())
-        all_labels.extend(test_labels.cpu().numpy())
+        accuracy = (correct_predictions / num_samples) * 100
 
         # Generate a confusion matrix
-        confusion_matrix = sklearn.metrics.confusion_matrix(all_labels, all_predictions)
-        print('Confusion Matrix:')
-        print(confusion_matrix)
+        #confusion_matrix = sklearn.metrics.confusion_matrix(all_labels, all_predictions)
+        #print('Confusion Matrix:')
+        #print(confusion_matrix)
 
-        print(f'Accuracy: {accuracy:.1f}%')
+        print(f'Correct Predictions {correct_predictions}/{num_samples} Accuracy: {accuracy:.1f}%')
 
 
 def main():
